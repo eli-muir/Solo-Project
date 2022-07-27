@@ -5,4 +5,6 @@ import App from "./src/App";
 
 import styles from './style.css';
 
-render(<App />, document.getElementById("root"));
+render(<App />,
+ document.getElementById("root")
+ );
