@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {Route, withRouter} from 'react-router-dom';
-import Vegetables from '.vegetables';
+import Vegetables from '.Vegetables.js';
 import { render } from 'react-dom/cjs/react-dom.production.min';
 
 //create a state object which consists of an empty array called vegetables
@@ -19,7 +18,10 @@ componentDidMount() {
   let vegetableList = [];
   fetch("https://api.jsonbin.io/v3/b/62e08bf02c868775a539f469")
     .then(response => {
-          return response.json();
+      if (!response.ok) {
+        throw Error("ERROR");
+      }
+      return response.json();
       }).then(data => {
       vegetableList = data.results.map((vegetable) => {
           return vegetable;
