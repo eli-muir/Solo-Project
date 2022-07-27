@@ -1,10 +1,13 @@
 //This will act as entry point for our webpack.
 import React from "react";
-import {render} from 'react-dom'
-import App from "./src/App";
+import{createRoot} from 'react-dom/client'
+import App from "./client/components/App";
 
 import styles from './style.css';
 
-render(<App />,
- document.getElementById("root")
- );
+const contents = createRoot(document.getElementById("contents"))
+
+contents.render( 
+  <App/>
+
+);

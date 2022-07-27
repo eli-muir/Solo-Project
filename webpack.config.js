@@ -15,24 +15,18 @@ module.exports={
      */
     entry: "./index.js", 
     output: {
-        /** "path"
-         * the folder path of the output file 
-         */
-        path: path.resolve(__dirname, "public"),
-        /** "filename"
-         * the name of the output file 
-         */
-        filename: "main.js"
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js'
     },
+    // performance: {
+    //     hints: false,
+    //     maxEntrypointSize: 512000,
+    //     maxAssetSize: 512000
+    // },
     plugins: [new HtmlWebpackPlugin({
         title:'Development',
-        template: 'index.html'
+        template: './index.html'
       })],
-    /** "target"
-     * setting "node" as target app (server side), and setting it as "web" is 
-     * for browser (client side). Default is "web"
-     */
-    target: "web",
     devServer: {
         /** "port" 
          * port of dev server
@@ -41,7 +35,9 @@ module.exports={
         /** "static" 
          * This property tells Webpack what static file it should serve
         */
-        static: ["./public/main.js"],
+        static: {
+            directory: path.resolve(__dirname, 'dist')
+        },
         /** "open" 
          * opens the browser after server is successfully started
         */
@@ -57,14 +53,6 @@ module.exports={
         */
         liveReload: true
     },
-    resolve: {
-        /** "extensions" 
-         * If multiple files share the same name but have different extensions, webpack will 
-         * resolve the one with the extension listed first in the array and skip the rest. 
-         * This is what enables users to leave off the extension when importing
-         */
-        extensions: ['.js','.jsx','.json'] 
-    },
     module:{
         /** "rules"
          * This says - "Hey webpack compiler, when you come across a path that resolves to a '.js or .jsx' 
@@ -74,13 +62,12 @@ module.exports={
          */
         rules: [
             {
-                test: /\.(js|jsx)$/,    //kind of file extension this rule should look for and apply in test
+                test: /\.jsx?$/,    //kind of file extension this rule should look for and apply in test
                 exclude: /node_modules/, //folder to be excluded
-                loader:  'babel-loader', //loader which we are going to use
-                options: {
-                    presets: ['@babel/preset-env', '@babel/react'],
-            
-                  }
+                loader:  require.resolve('babel-loader'), //loader which we are going to use
+                // options: {
+                //     presets: ['@babel/preset-env', '@babel/react']
+                //   }
             },
             {
                 test: /\.(scss|css)$/,  //.scss or css
