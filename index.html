@@ -3,16 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Urban Garden Planner</title>
-  <link rel="stylesheet" href="./styles.css">
+  <title>Veggie Garden Info Grabber</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
  <!-- Hang React App Here -->
- <div id="contents"></div>
- <!-- LOAD SCRIPTS -->
- <!-- <script type="text/javascript" src = "./dist/bundle.js" ></script> -->
+ <!-- <div id="contents"></div> -->
 
+ <h1>Veggie Garden Info Grabber</h1>
+
+ <form method = "POST" action = "/veggie">
+   <input type="text" placeholder= "Enter veggie name" name="veggie">
+   <input type="text" placeholder= "Enter veggie info" name="veggie info">
+   <button type="submit">Submit</button>
+ </form>
 </body>
 
 </html>
+<!-- LOAD SCRIPTS -->
+<!-- <script type="text/javascript" src = "./dist/bundle.js" ></script> -->

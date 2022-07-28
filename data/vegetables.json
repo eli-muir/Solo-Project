@@ -99,5 +99,6 @@
     "name": "Zucchini",
     "seedTime": ["may","june"],
     "harvestTime": ["july", "august", "september", "october"]
-  }]
+  }
+  ]
 }
